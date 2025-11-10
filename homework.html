@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>form_abc</title>
+</head>
+<body>
+
+<nav align="center">
+  <ul>
+    <li><a href="passport.html">Смена паспорта</a></li>
+    <li><a href="table.html">Таблицы</a></li>
+    <li><a href="homework.html">Задача</a></li>
+  </ul>
+</nav>
+
+<p name="formulation">
+  Известна денежная сумма. Разменять её купюрами 500, 100, 10 и монетой 2 руб., если это возможно
+</p>
+
+<form action="https://google.com" target="_blank" method="get">
+
+<ul>
+  <li>
+    <label for="sum">Денежная сумма: </label>
+    <input id="sum" name="sum" type="number" value="1000">
+  </li>
+  <li>
+    <label for="money">Вид купюры: </label>
+    <select name="money" id="money">
+      <option value="500">500</option>
+      <option value="100">100</option>
+      <option value="10">10</option>
+      <option value="2">2</option>
+    </select>
+  </li>
+  <li>
+    <label for="result">Количество купюр: </label>
+    <input id="result" name="result" value="не определен" readonly>
+  </li>
+  <li>
+    <label for="verify">Найти количество купюр: </label>
+    <input id="verify" type="button" value="ответ">
+  </li>
+</ul>
+
+<script>
+function divideValue() {
+  const elementSum = document.getElementById("sum");
+  let sum = parseInt(elementSum.value);
+  
+  if (isNaN(sum) || sum < 0) {
+    alert("Введите корректную положительную сумму");
+    return;
+  }
+
+  let select = document.getElementById("money");
+  let selectedValue = select.value;
+  let num = Number(selectedValue);
+
+  let result = Math.floor(sum / num);
+
+  const outputElement = document.getElementById("result");
+  outputElement.value = result;
+}
+
+document.getElementById("verify").addEventListener("click", divideValue);
+</script>
+
+<p>
+<input type="Submit" name="submit"  value="Отправить анкету">
+</p>
+
+</form>
+
+</body>
+</html>
